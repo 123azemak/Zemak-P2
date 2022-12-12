@@ -30,7 +30,7 @@ function animate() {
 	}
 }
 
-/************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
+/************* DO TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
@@ -45,6 +45,16 @@ var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
+
+
+mRequest.onreadystatechange= function(){
+	if(this.readyState == 4 && this.status == 200){
+		mJson =JSON.parse(this.responseText);
+		resolve(data);
+	} else if(this.readyState === 4){
+	   reject('error getting resource');
+	}
+}
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
@@ -80,6 +90,10 @@ window.addEventListener('load', function() {
 }, false);
 
 function GalleryImage() {
+	this.imgLocation = ;
+    this.description = "";
+    this.date = ;
+	this.img = ;
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
 	//2. description of photo
