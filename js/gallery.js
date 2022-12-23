@@ -33,7 +33,7 @@ function animate() {
 /************* DO TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
-	document.getElementById(photo).src="img/places/[blank].jpg";
+	document.getElementById(photo).src="img/places/welcome.png";
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
@@ -47,98 +47,23 @@ var mCurrentIndex = 0;
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 
+// Holds the retrived JSON information
+var mJson;
 
-mRequest.onreadystatechange= function(){
-	if(this.readyState == 4 && this.status == 200){
-		mJson =JSON.parse(this.responseText);
-		resolve(data);
-	} else if(this.readyState === 4){
-	   reject('error getting resource');
+mRequest.onreadystatechange = function(){
+	if(this.ready == 4 && this.status == 200){
+		mJson = JSON.parse(mRequest.responseText);
+		console.log(mJson);
 	}
+
+
+
 }
 
 // Array holding GalleryImage objects (see below).
-var mImages = [{ //idk how to link each object 
-	"imgPath": "img/places/australia.jpg",
-	"imgLocation": "Australia",
-	"description": "Loch Ard Gorge",
-	"date": "01/01/2016"
-},
-{
-	"imgPath": "img/places/austria.jpg",
-	"imgLocation": "Austria",
-	"description": "Austrian chapel",
-	"date": "01/02/2016"
-},
-{
-	"imgPath": "img/places/france.jpg",
-	"imgLocation": "Paris",
-	"description": "Eiffel Tower",
-	"date": "01/03/2016"
-},
-{
-	"imgPath": "img/places/greece.jpg",
-	"imgLocation": "Greece",
-	"description": "Greek coastline",
-	"date": "01/04/2016"
-},
-{
-	"imgPath": "img/places/hungary.jpg",
-	"imgLocation": "Hungary",
-	"description": "Budapest skyline",
-	"date": "01/05/2016"
-},
-{
-	"imgPath": "img/places/india.jpg",
-	"imgLocation": "India",
-	"description": "Taj Mahal",
-	"date": "01/06/2016"
-},
-{
-	"imgPath": "img/places/italy.jpg",
-	"imgLocation": "Italy",
-	"description": "Venice",
-	"date": "01/07/2016"
-},
-{
-	"imgPath": "img/places/japan.jpg",
-	"imgLocation": "Japan",
-	"description": "Hirosaki Castle",
-	"date": "01/08/2016"
-},
-{
-	"imgPath": "img/places/korea.jpg",
-	"imgLocation": "South Korea",
-	"description": "Seoul",
-	"date": "01/09/2016"
-},
-{
-	"imgPath": "img/places/norway.jpg",
-	"imgLocation": "Norway",
-	"description": "Countryside mountains",
-	"date": "01/10/2016"
-},
-{
-	"imgPath": "img/places/switzerland.jpg",
-	"imgLocation": "Switzerland",
-	"description": "Lake castle",
-	"date": "01/11/2016"
-},
-{
-	"imgPath": "img/places/thailand.jpg",
-	"imgLocation": "Thailand",
-	"description": "Beachline",
-	"date": "01/12/2016"
-},
-{
-	"imgPath": "img/places/turkey.jpg",
-	"imgLocation": "Turkey",
-	"description": "Istanbul",
-	"date": "01/13/2016"
-}]; //each json object inside the js array
+var mImages = [];
 
-// Holds the retrived JSON information
-var mJson;
+//each json object inside the js array
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
@@ -167,14 +92,9 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage() { //what do i put in here
-	this.imgLocation = ;
-    this.description = "";
-    this.date = ;
-	this.img = ;
-	//implement me as an object to hold the following data about an image:
-	//1. location where photo was taken
-	//2. description of photo
-	//3. the date when the photo was taken
-	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+function GalleryImage() { 
+	let location = "";
+	let description = "";
+	let date = "";
+	let img = "";
 }
