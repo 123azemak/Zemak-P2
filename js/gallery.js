@@ -33,14 +33,15 @@ function animate() {
 /************* DO TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
-	document.getElementById(photo).src="img/places/welcome.png";
+	document.getElementById('photo').src=mImages[0].img;
+	// if(k < path3.length - 1){k++;} else
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
 	console.log('swap photo');
 }
-
+var mImages = [];
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
@@ -50,24 +51,25 @@ var mRequest = new XMLHttpRequest();
 // Holds the retrived JSON information
 var mJson;
 
+var mUrl = 'images.json';
+
 mRequest.onreadystatechange = function(){
 	if(this.ready == 4 && this.status == 200){
 		mJson = JSON.parse(mRequest.responseText);
-		console.log(mJson);
+		iterateJSON(mJson);
 	}
-
-
-
-}
+};
+mRequest.open("GET", mUrl, true);
+mRequest.send();
 
 // Array holding GalleryImage objects (see below).
-var mImages = [];
+
 
 //each json object inside the js array
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'images.json';
+
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -97,4 +99,14 @@ function GalleryImage() {
 	let description = "";
 	let date = "";
 	let img = "";
+}
+
+function iterateJSON(mJSON){
+for(x=0; x<mJSON.images.length; x++){
+	mImages[x] = new GalleryImage();
+	mImages[x].location = mJson.images[x].imgLocation;
+	mImages[x].description = mJson.images[x].description;
+	mImages[x].date = mJson.images[x].date;
+	mImages[x].img = mJson.images[x].imgPath;
+}
 }
