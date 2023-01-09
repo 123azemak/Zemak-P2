@@ -4,6 +4,7 @@ body {
 	background-image: url(../img/geometry.jpg);
 }
 
+
 #photoBooth {
 	margin-top: .2em;
 	padding: 10px;
@@ -70,7 +71,7 @@ body {
 
 /*Add CSS styles to rotate the element 90deg
 Make it animate nicely. You'll need CSS3 for this*/
-.rot90 {}
+.rot90 {text-align: center;}
 
 /*Add CSS styles to rotate the element 180deg
 Make it animate nicely. You'll need CSS3 for this*/

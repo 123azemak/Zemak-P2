@@ -33,7 +33,10 @@ function animate() {
 /************* DO TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
-	document.getElementById('photo').src=mImages[0].img;
+	const imageHTML = document.getElementById('photo').src;
+	imageHTML.src = mImages[mCurrentIndex].img;
+	if(mCurrentIndex < 12){mCurrentIndex++} else
+	{mCurrentIndex = 0};
 	// if(k < path3.length - 1){k++;} else
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
