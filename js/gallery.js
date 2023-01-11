@@ -45,11 +45,46 @@ function swapPhoto() {
 	console.log('swap photo');
 }
 var mImages = [];
+
+if(prevPhotoCount == true){
+
+    if(mCurrentIndex <= 0){
+        mCurrentIndex = (mImages.length - 1);
+        console.log("Launched PrevPhoto 1");
+        console.log(mCurrentIndex);
+    }
+    else{
+        mCurrentIndex--;
+        console.log("Launched PrevPhoto 2");
+        console.log(mCurrentIndex);
+    }
+
+    prevPhotoCount = false;
+    mLastFrameTime = 0;
+    currentTime = 0;
+}
+else{
+
+    if(mCurrentIndex >= (mImages.length - 1)){
+        mCurrentIndex = 0;
+        console.log(mCurrentIndex);
+    }
+    else{
+        mCurrentIndex++;
+        console.log(mCurrentIndex);
+    }
+
+    mLastFrameTime = 0;
+    currentTime = 0;
+}   
+
+
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
+
 
 // Holds the retrived JSON information
 var mJson;
