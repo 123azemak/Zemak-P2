@@ -104,12 +104,39 @@ function GalleryImage() {
 	let img = "";
 }
 
-function iterateJSON(mJSON){
-for(x=0; x<mJSON.images.length; x++){
-	mImages[x] = new GalleryImage();
-	mImages[x].location = mJson.images[x].imgLocation;
-	mImages[x].description = mJson.images[x].description;
-	mImages[x].date = mJson.images[x].date;
-	mImages[x].img = mJson.images[x].imgPath;
+function iterateJSON(){
+for(const currentIndex in mJson.images){
+	mImages[curretIndex] = new GalleryImage();
+	mImages[curretIndex].location = mJson.images[currentIndex].imgLocation;
+	mImages[curretIndex].description = mJson.images[currentIndex].description;
+	mImages[curretIndex].date = mJson.images[currentIndex].date;
+	mImages[curretIndex].img = mJson.images[currentIndex].imgPath;
 }
 }
+
+function rotatePosition(){
+	var htmlObject = document.querySelector(".moreIndicator");
+
+	if(htmlObject.classList.contains("rot90")== true){
+		htmlObject.classList.remove("rot90");
+		htmlObject.classList.add("rot270");
+
+		console.log("2LAUNCH")
+	}
+}
+
+function reveil(){
+	$('.details').fadeToggle();
+}
+
+function nextPhoto(){
+	swapPhoto();
+}
+
+var prevPhotoCount = false;
+
+function prevPhoto(){
+	prevPhotoCount = true;
+	swapPhoto();
+}
+
